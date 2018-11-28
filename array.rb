@@ -1,31 +1,43 @@
 puts "enter height and width"
-h=gets.chomp
-m=h.to_i
-w=gets.chomp
-n=w.to_i
-puts "#{m}"
-puts "#{n}"
-parentA=Array.new(m)
-puts "#{parentA}"
-parentA[0]=Array.new(n)
-parentA[1]=Array.new(n)
-parentA[2]=Array.new(n)
-puts "#{parentA}"
-a = Array.new(5)
-for ab = Array.new(5)
-b = parentA[1]
-b[0] = " " 
-b[1] = 1
-b[2] = " "
-b[3] = 1
-b[4] = " "
-c = Array.new(5)
-c = parentA[2]
-c[0] = 1 
-c[1] = " "
-c[2] = 1
-c[3] = " " 
-c[4] = 1
-puts "#{a.join()}"
-puts "#{b.join()}"
-puts "#{c.join()}"
+puts " enter delta_height"
+delta_height = gets.chomp.to_i
+
+puts "#{delta_height}"
+delta_width = ((delta_height*2)-1)
+
+puts "#{delta_width}"
+# Initlizing parent aray with delta_height
+parentA=Array.new(delta_height)
+
+
+# Intilizing sub arrays
+(0..(delta_height - 1)).each do |index|
+  parentA[index] = Array.new(delta_width, " ")
+end
+
+
+# Printing final data structure
+#puts "#{parentA}"
+mid = (delta_width-1)/2
+(0..(delta_height-1)).each do |i|
+  #(0..(delta_width-1)).each do |j|
+    start_pt = mid-i
+    end_pt = mid+i
+    counter = 0
+    (start_pt..end_pt).each do |index|
+      if counter.even?
+        parentA[i][index] = 1
+      else
+        parentA[i][index] = " "
+      end
+      counter += 1
+   # end
+  end
+end
+
+(0..(delta_height - 1)).each do |index|
+  puts "#{parentA[index].join()}"
+end
+
+#puts "#{parentA}"
+
