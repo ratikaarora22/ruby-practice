@@ -1,40 +1,43 @@
 puts "enter height and width"
+puts " enter delta_height"
+delta_height = gets.chomp.to_i
 
-# Takeing user input
-delta_height=gets.chomp.to_i
-delta_width=gets.chomp.to_i
-
-# Printing the user inputs
 puts "#{delta_height}"
-puts "#{delta_width}"
+delta_width = ((delta_height*2)-1)
 
+puts "#{delta_width}"
 # Initlizing parent aray with delta_height
 parentA=Array.new(delta_height)
 
-# Printing parent array
-puts "#{parentA}"
 
 # Intilizing sub arrays
 (0..(delta_height - 1)).each do |index|
-  parentA[index] = Array.new(delta_width)
+  parentA[index] = Array.new(delta_width, " ")
 end
 
+
 # Printing final data structure
-puts "#{parentA}"
+#puts "#{parentA}"
 mid = (delta_width-1)/2
 (0..(delta_height-1)).each do |i|
-  (0..(delta_width-1)).each do |j|
+  #(0..(delta_width-1)).each do |j|
     start_pt = mid-i
     end_pt = mid+i
+    counter = 0
     (start_pt..end_pt).each do |index|
-      if index.even?
+      if counter.even?
         parentA[i][index] = 1
       else
         parentA[i][index] = " "
       end
-    end
+      counter += 1
+   # end
   end
 end
 
-puts "#{parentA}"
+(0..(delta_height - 1)).each do |index|
+  puts "#{parentA[index].join()}"
+end
+
+#puts "#{parentA}"
 
